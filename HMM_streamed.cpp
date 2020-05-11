@@ -136,12 +136,17 @@ int main()
 	int train_routes_5 = 2;		//2nd level: 2 routes of 13 go left
 	int train_routes_6 = 11;	//2nd level: 11 routes of 13 go down
 
-	double x = (train_routes_1 + 1) / double(train_routes + 2);
-	double y = (train_routes_3 + 1) / double(train_routes_1 + 2);
+	//probabilities (these probabilities are constants right now, but should be dynamic)
+	double x = (train_routes_1 + 1) / double(train_routes + 2);		// '+1' and '+2' are laplac smoothing constants
+	double y = (train_routes_3 + 1) / double(train_routes_1 + 2);	
 	double z = (train_routes_5 + 1) / double(train_routes_2 + 2);
 
+	//{a,b,c}
+	//a is the starting node
+	//b is ending node
+	//c is the probabilities computed above (note, this should not be a constant)
 	directed_edge array_of_roads[] = {
-		{ 0,1,x},{ 0,2,abs(x-1)},{ 1,3,y},{1,4,abs(y-1)},{2,5,z},{2,6, abs(z-1)} };
+		{ 0,1,x},{ 0,2,abs(x-1)},{ 1,3,y},{1,4,abs(y-1)},{2,5,z},{2,6, abs(z-1)} };		//this is only the first few nodes
 		
 	//,{1,4},{2,5},{2,6 },{, },{ , },{ , },{ , },{ , },{ , },{ , },{ , },{ , },{ , },{ , },
 	//{ , },{ , },{ , },{ , },{ , },{ , },{ , },{ , },{ , },{ , },{ , },{ , },{ , },{ , },{ , },{ , },
@@ -154,6 +159,7 @@ int main()
 	{ 25,26 },{ 25,30 } ,{ 26,31 } ,{ 27,28 } ,{ 27,33 } ,{ 28,29 } ,{ 28,34 },{ 29,30 },{ 29,35 },{ 30,31 },{ 30,36 } ,{ 31,32 },{ 31,37 } ,{ 32,38 },{ 33,34 },{ 34,35 },{ 35,36 },{ 36,37 },
 	{ 37,40 },{ 38,37 } ,{ 38,39 },{ 39,41 },{ 40,40 } ,{ 41,40 } };	//NOTE: {40,40} is end of route! It does not count as a link/state
 	*/
+
 	int number_nodes = 4;
 
 	number_edges = sizeof(array_of_roads) / sizeof(array_of_roads[0]); //gives you number of elements in the array, in this case: number of edges
