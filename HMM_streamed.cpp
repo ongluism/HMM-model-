@@ -9,8 +9,6 @@ int number_edges;		//number of roads or directed edges of graph (not yet calcula
 						//intersect_num corresponds to a unique intersection
 class node {
 public:
-
-
 	int intersect_num; // I want to turn these variables into private variables
 	node* nxt;			//I also wanted to turn 'int intersect_num' into 'string intersect_name'
 	double weight_transition;		//but not sure what to change in the rest of the code
@@ -20,13 +18,21 @@ public:
 class directed_edge {
 
 public:
-
-
+    
 	int begin_Road;
 	int end_Road;	//I want to turn these variables into private variables
 	double weight_transition;		// and create a class like the one below, but not sure how. 
 };
 
+int generate_training_data(const int array_size)
+{
+                    // Syntax: datatype *array_name[4]; – – Here array_name is an array of 4 integer pointers i.e. the array can hold the address of 4 integer variables.
+                    
+    int *training_data[array_size]; // training_data is an array of pointers, each index holds the address of the *head for a single trip.
+    
+    
+    return 0;
+}
 
 
 /*
