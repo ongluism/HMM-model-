@@ -102,9 +102,12 @@ float prob_ljGivenlxC(int a_C[][NUM_NODES], float prob_c, int lj, int lx){
     return prob_sum;
 }
 
+
+
+
 int main(){
     // all training routes
-    const int TRAIN_DATA_SIZE = 6;
+    const int TRAIN_DATA_SIZE = 9;
     int trainData[TRAIN_DATA_SIZE][MAX_LINK_LENGTH] =
     {
         {0, 0, 1, 3, 6, 10, 15, 22, 30, 39, 47, 53, 58, 65},
@@ -112,7 +115,10 @@ int main(){
         {1, 0, 1, 3, 7, 12, 17, 25, 34, 42, 49, 54, 57, 60, 61, 65},
         {1, 0, 1, 4, 8, 12, 17, 25, 34, 43, 50, 54, 58, 65},
         {2, 0, 2, 9, 14, 21, 29, 38, 46, 52, 56, 59, 65},
-        {2, 0, 2, 9, 13, 19, 27, 36, 45, 52, 56, 59, 65}
+        {2, 0, 2, 9, 13, 19, 27, 36, 45, 52, 56, 59, 65},
+        {0, 0, 1, 3, 6, 10, 15, 23, 32, 40, 47, 53, 58, 65},
+        {1, 0, 1, 4, 8, 12, 17, 25, 34, 43, 51, 56, 59, 65},
+        {2, 0, 2, 9, 14, 21, 28, 35, 43, 50, 55, 59, 65}
     };
 
     // initialize all transition probabilities to zero
@@ -147,32 +153,32 @@ int main(){
     }
     // PREDICTION BLOCK
     //
-    const int TEST_DATA_SIZE = 3;
+    const int TEST_DATA_SIZE = 4;
     int predicted_links[TEST_DATA_SIZE][MAX_LINK_LENGTH];
     int testData[TEST_DATA_SIZE][MAX_LINK_LENGTH] =
     {
-        {1, 0, 1, 4, 8, 12, 17, 25, 34, 43, 51, 56, 59, 65},
-        {0, 0, 1, 3, 6, 10, 15, 23, 32, 40, 47, 53, 58, 65},
-        {2, 0, 2, 9, 14, 21, 28, 35, 43, 50, 55, 59, 65}
+        {0, 0, 1, 3, 6, 10, 15, 23, 31, 39, 47, 53, 54, 58, 65},
+        {1, 0, 1, 4, 8, 12, 17, 25, 33, 40, 47, 53, 58, 65},
+        {2, 0, 2, 9, 14, 20, 27, 36, 45, 52, 56, 59, 65},
+        {0, 0, 2, 3, 6, 10, 15, 23, 31, 39, 47, 53, 58, 65}
     };
    
     for(int i = 0; i < TEST_DATA_SIZE; i++ ){
         prediction(testData[i], predicted_links[i], a0, a1, a2, clusterProbabilityFloat);
         // accuracy
-        int j = 1;
+        int totalNumLinks = 0;
         float acc = 0.0;
-        for(; j < MAX_LINK_LENGTH; j++){
-            if(testData[i][j] > GOAL_NODE)
+        for(int j = 1; j < MAX_LINK_LENGTH; j++){
+            if(testData[i][j] == GOAL_NODE){
+                totalNumLinks = j-1;
                 break;
+            } 
            if(testData[i][j] == predicted_links[i][j-1]){
                acc = acc + 1.0;
            }
-        }
-        acc = acc/j; // j = 13
-        cout << "accuracy =" << acc << "%" << endl;
+        }        acc /= totalNumLinks;
+        cout << "Accuracy = " << acc*100.0 << "%" << endl;
     }
-    
-    
     
     return 0;
 }
