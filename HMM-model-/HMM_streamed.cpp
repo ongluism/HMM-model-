@@ -29,7 +29,7 @@ void calculateHmmParameters(int data[], int a[][NUM_NODES]){
     }
     
 }
-void prediction(int testData[], int a0[][NUM_NODES], int a1[][NUM_NODES], int a2[][NUM_NODES], float                clusterProbabilityFloat[]){
+void prediction(int testData[], int predicted_links[], int a0[][NUM_NODES], int a1[][NUM_NODES], int a2[][NUM_NODES], float                clusterProbabilityFloat[]){
     int linksPredicted[MAX_LINK_LENGTH]; // stores the predicted links
     linksPredicted[0] = 0;// starting point is always the same
     int lx = 0; // current link (lx) is initialized to 0, i.e the starting node.
@@ -38,7 +38,6 @@ void prediction(int testData[], int a0[][NUM_NODES], int a1[][NUM_NODES], int a2
     // For each link in testData predict the next link
     // currentLink index starts at one since testData[0] has cluster type
     for(int currentLinkIndex = 1; currentLinkIndex < MAX_LINK_LENGTH; ){
-        cout << currentLinkIndex << endl;
         // scope of ix (current node) iteration
         int max_sum_link = 0;
         float max_sum = 0.0; // initialize sum to zero
@@ -82,8 +81,11 @@ void prediction(int testData[], int a0[][NUM_NODES], int a1[][NUM_NODES], int a2
     }
     
     // testing output
-    cout << "predicted link:" << endl;
-    print_1D_array(linksPredicted, MAX_LINK_LENGTH);
+    for (int i = 0; i < MAX_LINK_LENGTH; i++){
+        predicted_links[i] = linksPredicted[i];
+    }
+//    cout << "predicted link:" << endl;
+//    print_1D_array(linksPredicted, MAX_LINK_LENGTH);
 }
 
 // compute P(lj | lx, C)
@@ -146,20 +148,35 @@ int main(){
     // PREDICTION BLOCK
     //
     const int TEST_DATA_SIZE = 3;
+    int predicted_links[TEST_DATA_SIZE][MAX_LINK_LENGTH];
     int testData[TEST_DATA_SIZE][MAX_LINK_LENGTH] =
     {
         {1, 0, 1, 4, 8, 12, 17, 25, 34, 43, 51, 56, 59, 65},
         {0, 0, 1, 3, 6, 10, 15, 23, 32, 40, 47, 53, 58, 65},
         {2, 0, 2, 9, 14, 21, 28, 35, 43, 50, 55, 59, 65}
     };
-    prediction(testData[1], a0, a1, a2, clusterProbabilityFloat);
-//    for(int i = 0; i < TEST_DATA_SIZE; i++ ){
-//        prediction(testData[i], a0, a1, a2, clusterProbabilityFloat);
-//    }
+   
+    for(int i = 0; i < TEST_DATA_SIZE; i++ ){
+        prediction(testData[i], predicted_links[i], a0, a1, a2, clusterProbabilityFloat);
+        // accuracy
+        int j = 1;
+        float acc = 0.0;
+        for(; j < MAX_LINK_LENGTH; j++){
+            if(testData[i][j] > GOAL_NODE)
+                break;
+           if(testData[i][j] == predicted_links[i][j-1]){
+               acc = acc + 1.0;
+           }
+        }
+        acc = acc/j; // j = 13
+        cout << "accuracy =" << acc << "%" << endl;
+    }
+    
     
     
     return 0;
 }
+
 
 // HELPER FUNCTIONS
 //
@@ -185,6 +202,17 @@ float sum( int arr[], int size){
    }
     return sum;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 // *** used later to find all links seen by trips **
 
