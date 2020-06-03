@@ -177,6 +177,7 @@ int main(){
                acc = acc + 1.0;
            }
         }        acc /= totalNumLinks;
+        print_1D_array(predicted_links[i], totalNumLinks);
         cout << "Accuracy = " << acc*100.0 << "%" << endl;
     }
     

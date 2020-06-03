@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:HMM-model.xcodeproj">
+      location = "self:/Users/lesleygguzman/Desktop/HMM-model/HMM-model-.xcodeproj">
    </FileRef>
 </Workspace>

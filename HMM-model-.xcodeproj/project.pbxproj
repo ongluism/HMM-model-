@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5005346F247F0D6B0041A52A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5005346E247F0D6B0041A52A /* main.cpp */; };
 		50CE6E29247F0E82007CA93B /* HMM_streamed.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50CE6E28247F0E82007CA93B /* HMM_streamed.cpp */; };
 /* End PBXBuildFile section */
 
@@ -24,9 +23,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5005346B247F0D6B0041A52A /* HMM-model */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "HMM-model"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5005346E247F0D6B0041A52A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		5005346B247F0D6B0041A52A /* HMM-model- */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "HMM-model-"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50CE6E28247F0E82007CA93B /* HMM_streamed.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HMM_streamed.cpp; sourceTree = "<group>"; };
+		50E028E224801AED00BEEC9D /* training_data.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = training_data.txt; sourceTree = "<group>"; };
+		50E028E32480663400BEEC9D /* training-data-key.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "training-data-key.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +51,7 @@
 		5005346C247F0D6B0041A52A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5005346B247F0D6B0041A52A /* HMM-model */,
+				5005346B247F0D6B0041A52A /* HMM-model- */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -59,8 +59,9 @@
 		5005346D247F0D6B0041A52A /* HMM-model- */ = {
 			isa = PBXGroup;
 			children = (
+				50E028E32480663400BEEC9D /* training-data-key.txt */,
 				50CE6E28247F0E82007CA93B /* HMM_streamed.cpp */,
-				5005346E247F0D6B0041A52A /* main.cpp */,
+				50E028E224801AED00BEEC9D /* training_data.txt */,
 			);
 			path = "HMM-model-";
 			sourceTree = "<group>";
@@ -68,9 +69,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5005346A247F0D6B0041A52A /* HMM-model */ = {
+		5005346A247F0D6B0041A52A /* HMM-model- */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 50053472247F0D6B0041A52A /* Build configuration list for PBXNativeTarget "HMM-model" */;
+			buildConfigurationList = 50053472247F0D6B0041A52A /* Build configuration list for PBXNativeTarget "HMM-model-" */;
 			buildPhases = (
 				50053467247F0D6B0041A52A /* Sources */,
 				50053468247F0D6B0041A52A /* Frameworks */,
@@ -80,9 +81,9 @@
 			);
 			dependencies = (
 			);
-			name = "HMM-model";
+			name = "HMM-model-";
 			productName = "HMM-model";
-			productReference = 5005346B247F0D6B0041A52A /* HMM-model */;
+			productReference = 5005346B247F0D6B0041A52A /* HMM-model- */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -99,7 +100,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 50053466247F0D6B0041A52A /* Build configuration list for PBXProject "HMM-model" */;
+			buildConfigurationList = 50053466247F0D6B0041A52A /* Build configuration list for PBXProject "HMM-model-" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -112,7 +113,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5005346A247F0D6B0041A52A /* HMM-model */,
+				5005346A247F0D6B0041A52A /* HMM-model- */,
 			);
 		};
 /* End PBXProject section */
@@ -122,7 +123,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5005346F247F0D6B0041A52A /* main.cpp in Sources */,
 				50CE6E29247F0E82007CA93B /* HMM_streamed.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,7 +258,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		50053466247F0D6B0041A52A /* Build configuration list for PBXProject "HMM-model" */ = {
+		50053466247F0D6B0041A52A /* Build configuration list for PBXProject "HMM-model-" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				50053470247F0D6B0041A52A /* Debug */,
@@ -267,7 +267,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		50053472247F0D6B0041A52A /* Build configuration list for PBXNativeTarget "HMM-model" */ = {
+		50053472247F0D6B0041A52A /* Build configuration list for PBXNativeTarget "HMM-model-" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				50053473247F0D6B0041A52A /* Debug */,
